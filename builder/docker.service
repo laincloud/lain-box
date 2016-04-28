@@ -1,0 +1,22 @@
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target docker.socket
+Requires=docker.socket
+
+[Service]
+Type=notify
+Environment=GOTRACEBACK=crash DOCKER_CERT_PATH=/etc/docker
+ExecStart=/usr/bin/docker daemon \
+          --insecure-registry registry.lain \
+          --insecure-registry registry.lain.local \
+          --selinux-enabled \
+          --host unix:///var/run/docker.sock
+
+MountFlags=slave
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target
