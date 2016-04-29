@@ -22,8 +22,7 @@ wget "https://github.com/justone/dockviz/releases/download/v0.3/dockviz_linux_am
 chmod +x /usr/bin/dockviz
 
 # Enable non-root Docker operation
-groupadd docker || true
-usermod -a -G docker vagrant
+gpasswd -a vagrant docker
 
 # TODO: Fill public installation URL here
 #pip install # XXX: lain-sdk
