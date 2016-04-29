@@ -11,7 +11,7 @@ gpgkey=https://yum.dockerproject.org/gpg
 EOF
 
 # Install and configure Docker Engine
-yum install -y docker-engine-1.11.0
+yum -y install docker-engine-1.11.0
 cp -f /vagrant/docker.service /etc/systemd/system/docker.service
 systemctl daemon-reload
 systemctl start docker
@@ -23,6 +23,11 @@ chmod +x /usr/bin/dockviz
 
 # Enable non-root Docker operation
 gpasswd -a vagrant docker
+
+# Install development tools
+yum -y groupinstall "Development Tools"
+yum -y install python-devel
+curl https://bootstrap.pypa.io/get-pip.py | python
 
 # TODO: Fill public installation URL here
 #pip install # XXX: lain-sdk
