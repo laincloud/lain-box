@@ -3,5 +3,4 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "laincloud/centos-lain"
   config.vm.provision :shell, path: "provision.sh"
-  config.ssh.pty = "true"
 end
