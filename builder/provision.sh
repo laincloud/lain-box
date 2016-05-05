@@ -29,6 +29,7 @@ yum -y groupinstall "Development Tools"
 yum -y install python-devel
 curl https://bootstrap.pypa.io/get-pip.py | python
 
-# TODO: Fill public installation URL here
-#pip install # XXX: lain-sdk
-#pip install # XXX: lain-cli
+# Install lain-sdk and lain-cli
+pip install git+https://github.com/ericpai/wssh.git  # FIXME
+pip install git+https://github.com/laincloud/lain-sdk.git
+pip install git+https://github.com/laincloud/lain-cli.git
