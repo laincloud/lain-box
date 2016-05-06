@@ -2,7 +2,7 @@
 
 本项目用来在本机上通过 vagrant 启动一个可用的 lain 本地开发环境，并可以方便的在虚拟机里开发多个 lain 应用。
 
-请修改 config.yaml ，把你的 Lain 应用的项目路径加入到 `apps` 配置下，然后运行
+请将 config.sample.yaml  复制为 `config.yaml` 并按需修改，将你的 Lain 应用的项目路径加入到 `apps` 配置下，然后运行
 
 ```sh
 vagrant up
