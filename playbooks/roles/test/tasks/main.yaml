@@ -1,0 +1,90 @@
+- name: init /etc/hosts
+  lineinfile: dest=/etc/hosts line={{ item }}
+  with_items:
+    - 192.168.77.201  registry.lain.local
+    - 192.168.77.201  console.lain.local
+    - 192.168.77.201  entry.lain.local
+    - 192.168.77.201  ipaddr-client.lain.local
+    - 192.168.77.201  ipaddr-service.lain.local
+    - 192.168.77.201  ipaddr-client.ipaddr-resource.resource.lain.local
+
+- name: install pkg
+  yum: pkg={{ item }}
+  with_items:
+    - git
+    - python-pip
+    - gcc
+    - python-devel
+
+- name: install lainctl
+  pip: name='git+{{ REPO_LAINCTL }}#egg=lain_admin_cli' state=latest
+
+- name: install lainsdk
+  pip: name='git+{{ REPO_LAINSDK }}#egg=lain_sdk' state=latest
+
+- name: install laincli
+  pip: name={{ item }} state=latest
+  with_items:
+    - "git+{{ REPO_PATCHED_WSSH }}#egg=wssh"
+    - "git+{{ REPO_LAINCLI }}#egg=lain_cli"
+
+- name: init laincli
+  command: "{{ item }}"
+  with_items:
+    - lain config show
+    - lain config save local domain lain.local
+    - lain config save-global private_docker_registry registry.lain.local
+
+- name: install demo resource
+  git: repo={{ REPO_RESOURCE }} dest={{ DEMO_RESOURCE_HOME }}
+
+- name: test demo resource
+  command: "{{ item }}"
+  args:
+    chdir: "{{ DEMO_RESOURCE_HOME }}"
+  with_items:
+    - lain dashboard local
+    - lain reposit local
+    - lain build
+    - lain tag local
+    - lain push local
+    - lain deploy local
+
+- name: install demo service
+  git: repo={{ REPO_SERVICE }} dest={{ DEMO_SERVICE_HOME }}
+
+- name: test demo service
+  command: "{{ item }}"
+  args:
+    chdir: "{{ DEMO_SERVICE_HOME }}"
+  with_items:
+    - lain dashboard local
+    - lain reposit local
+    - lain build
+    - lain tag local
+    - lain push local
+    - lain deploy local
+    - lain ps local
+    - lain scale -n 2 local web
+    - lain ps local
+
+- name: install demo client
+  git: repo={{ REPO_CLIENT }} dest={{ DEMO_CLIENT_HOME }}
+
+- name: test demo client
+  command: "{{ item }}"
+  args:
+    chdir: "{{ DEMO_CLIENT_HOME }}"
+  with_items:
+    - lain dashboard local
+    - lain reposit local
+    - lain build
+    - lain tag local
+    - lain push local
+    - lain deploy local
+    - lain ps local
+    - lain scale -n 2 local web
+    - lain ps local
+
+- name: check client
+  uri: url="http://ipaddr-client.lain.local" status_code=200
