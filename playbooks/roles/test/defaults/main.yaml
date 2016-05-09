@@ -1,0 +1,11 @@
+REPO_LAINCTL: "https://github.com/laincloud/lainctl.git"
+REPO_PATCHED_WSSH: "https://github.com/ericpai/wssh.git"
+REPO_LAINCLI: "https://github.com/laincloud/lain-cli.git"
+REPO_LAINSDK: "https://github.com/laincloud/lain-sdk.git"
+REPO_RESOURCE: "https://github.com/laincloud/demo-ipaddr-resource.git"
+REPO_SERVICE: "https://github.com/laincloud/demo-ipaddr-service.git"
+REPO_CLIENT: "https://github.com/laincloud/demo-ipaddr-client.git"
+
+DEMO_RESOURCE_HOME: "/home/vagrant/demo-ipaddr-resource"
+DEMO_SERVICE_HOME: "/home/vagrant/demo-ipaddr-service"
+DEMO_CLIENT_HOME: "/home/vagrant/demo-ipaddr-client"
