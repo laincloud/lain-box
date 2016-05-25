@@ -30,6 +30,6 @@ yum -y install python-devel
 curl https://bootstrap.pypa.io/get-pip.py | python
 
 # Install lain-sdk and lain-cli
-pip install git+https://github.com/ericpai/wssh.git  # FIXME
+pip install git+https://github.com/laincloud/entry.git
 pip install git+https://github.com/laincloud/lain-sdk.git
 pip install git+https://github.com/laincloud/lain-cli.git
