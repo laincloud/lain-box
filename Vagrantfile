@@ -14,6 +14,8 @@ Vagrant.configure(2) do |config|
     v.memory = cfg["memory"]
   end
 
+  config.vm.network "private_network", ip: cfg["ip"]
+
   (cfg["apps"] || {}).each_pair do |name, path|
     config.vm.synced_folder File.expand_path(path), "/apps/#{name}"
   end

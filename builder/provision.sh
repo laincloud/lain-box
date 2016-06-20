@@ -11,7 +11,7 @@ gpgkey=https://yum.dockerproject.org/gpg
 EOF
 
 # Install and configure Docker Engine
-yum -y install docker-engine-1.11.0
+yum -y install docker-engine-1.11.2
 cp -f /vagrant/docker.service /etc/systemd/system/docker.service
 systemctl daemon-reload
 systemctl start docker
