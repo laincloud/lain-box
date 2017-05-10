@@ -23,3 +23,10 @@ lain build
 ```
 
 等 lain 命令来开发和调试你的应用了。
+
+## laincloud/lain-box 的打包过程
+
+```
+cd builder/
+./build.sh  # 打包出来的 box 名含有时间戳
+```
