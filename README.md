@@ -28,5 +28,5 @@ lain build
 
 ```
 cd builder/
-./build.sh  # 打包出来的 box 名含有时间戳
+./build.sh
 ```
