@@ -1,3 +1,5 @@
+# 不再使用 DEPRECATED
+
 # LAIN Box
 
 本项目用来在本机上通过 vagrant 启动一个可用的 lain 本地开发环境，并可以方便的在虚拟机里开发多个 lain 应用。
